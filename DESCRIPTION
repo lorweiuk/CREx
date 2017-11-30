@@ -1,0 +1,13 @@
+Package: CREx
+Type: Package
+Title: Control interactive visual-audio presentation from R.
+Version: 0.1.0
+Author: Lorenz Weise
+Maintainer: Lorenz Weise <lorenz-weise@gmx.net>
+Description: CREx allows controlling interactive visual-audio presentations
+    from R. CREx works by providing R-wrapper functions for underlying C-functions,
+    which use the SDL2 C-library for controlling graphics, sound and user interaction.
+    Essentially, CREx is a very simple SDL interface.
+License: fill in license
+Encoding: UTF-8
+LazyData: true

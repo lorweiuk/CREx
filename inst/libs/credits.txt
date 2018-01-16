@@ -1,3 +1,2 @@
 This package heavily uses the C-library SDL2, as well as several SDL related libraries.
-Additionally, a font is included (BEBAS.ttf), available from dafont.org. All relevant licenses
-can be found along with the libraries' dlls.
+All relevant licenses can be found along with the libraries' dlls.

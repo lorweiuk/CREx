@@ -12,3 +12,4 @@ Description: CREx allows running behavioral experiments from R by controlling vi
 License: fill in license
 Encoding: UTF-8
 LazyData: true
+ByteCompile: true

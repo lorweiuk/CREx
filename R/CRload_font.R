@@ -1,6 +1,6 @@
 #' Loads a font file
 #'
-#' Loads a font file specified in fontfile, if fontfile is empty, loads default font BEBAS.ttf
+#' Loads a font file specified in fontfile. 
 
 CRload_font <- function(font_list, fontfile, fontsize) {
     

@@ -1,2 +1,2 @@
 This package heavily uses the C-library SDL2, as well as several SDL related libraries. 
-All relevant licenses can be found along with the libraries' dlls. Note that the SDL2 library was slightly changed in order to pass the OS message-timestamp to the user.
+All relevant licenses can be found along with the libraries' dlls. Note that the SDL2 library was slightly changed in order to pass the OS message-timestamp to the user and always block until screen was refreshed.

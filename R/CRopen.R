@@ -10,7 +10,7 @@
 CRopen <- function(x=0, y=0, w=0, h=0) {
 
   out <- .Call( "SDLopen", x, y, w, h, PACKAGE = "SDLDLL" )
-  names(out) <- c("window", "surface", "renderer", "event", "width", "height")
+  names(out) <- c("window", "surface", "renderer", "event", "width", "height", "timer_resolution", "timer_lag")
 
   return(out)
 }

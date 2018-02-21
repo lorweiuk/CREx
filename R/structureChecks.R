@@ -90,11 +90,11 @@ isPointList <- function(objin) {
 
 orderGraphicsList <- function(objin) {
   # if provided graphics_list, brings it into order
-  if (isGraphicsList(objin)  &&  names(objin) != c("window","surface","renderer","event","width","height")) {
+  if (isGraphicsList(objin)  &&  names(objin) != c("window","surface","renderer","event","width","height","timer_resolution","timer_lag")) {
     # unordered graphics_list
-    return( list(window = objin$window, surface = objin$surface, renderer = objin$renderer, event = objin$event, width = objin$width, height = objin$height) )
+    return( list(window = objin$window, surface = objin$surface, renderer = objin$renderer, event = objin$event, width = objin$width, height = objin$height, timer_resolution = objin$timer_resolution, timer_lag = objin$timer_lag ) )
   
-  } else if (isGraphicsList(objin)  &&  names(objin) == c("window","surface","renderer","event","width","height")) {
+  } else if (isGraphicsList(objin)  &&  names(objin) == c("window","surface","renderer","event","width","height","timer_resolution","timer_lag")) {
     # ordered graphics_list
     return(objin)
   } else {

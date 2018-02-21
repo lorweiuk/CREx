@@ -5,6 +5,5 @@
 
 CRwait_ms <- function(ms) {
 
-  out <- .Call("SDLwait", ms, PACKAGE = "SDLDLL")
-  return(out)
+  invisible( .Call("SDLwait", ms, PACKAGE = "SDLDLL") )
 }

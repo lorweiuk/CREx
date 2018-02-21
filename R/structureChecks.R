@@ -1,6 +1,6 @@
 isGraphicsList <- function(objin) {
   # check if objin is graphics_list
-  if ( "window" %in% names(objin) && "renderer" %in% names(objin) && "surface" %in% names(objin) && "event" %in% names(objin) ) {
+  if ( "window" %in% names(objin) && "renderer" %in% names(objin) && "surface" %in% names(objin) && "event" %in% names(objin) && "timer_resolution" %in% names(objin) && "timer_lag" %in% names(objin) ) {
     return(TRUE)
   } else {
     return(FALSE)

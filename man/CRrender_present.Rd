@@ -13,5 +13,5 @@ CRrender_present(graphics_list)
     \item{graphics_list}{a list containing pointers to window, renderer etc. created with \code{CRopen}.}
 }
 \value{
-    Returns time when underlying C-function returned, in milliseconds, since \code{CRopen} was called; this can be used as most precise estimate of when graphical content appeared on the screen.
+    Returns time when underlying C-function returned, in milliseconds, system was started; this can be used as most precise estimate of when graphical content appeared on the screen.
 }

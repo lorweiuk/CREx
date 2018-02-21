@@ -4,7 +4,7 @@
     Get time in milliseconds.
 }
 \description{
-    Get time in milliseconds since \code{CRopen} was called.
+    Get time in milliseconds since system was started.
 }
 \usage{
 CRget_time()

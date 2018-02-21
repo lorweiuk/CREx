@@ -18,7 +18,7 @@ CRopen(x = 0, y = 0, w = 0, h = 0, fontpath = "", textsize = 60)
     \item{textsize}{size of rendered text.}
 }
 \value{
-    Returns a graphics_list containing pointers to graphics structures, font, and integers of width and height of window.
+    Returns a graphics_list containing pointers to graphics structures, font, and integers of width and height of window, as well as timer resolution and timer lag.
 }
 \details{
     \code{CRopen} calls SDL functions to open a window, get window surface and renderer, load font, and initialize R pointers to structures required later; with default arguments x = y = w = h = 0, a full-screen window is opened.

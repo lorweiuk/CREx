@@ -1,6 +1,6 @@
 isGraphicsList <- function(objin) {
   # check if objin is graphics_list
-  if ( "window" %in% names(objin) && "renderer" %in% names(objin) && "surface" %in% names(objin) && "event" %in% names(objin) && "timer_resolution" %in% names(objin) && "timer_lag" %in% names(objin) ) {
+  if ( "window" %in% names(objin) && "renderer" %in% names(objin) && "surface" %in% names(objin) && "event" %in% names(objin) && "timer_resolution" %in% names(objin) && "timer_lag" %in% names(objin) && "frame_duration" %in% names(objin) && "last_nowait" %in% names(objin) ) {
     return(TRUE)
   } else {
     return(FALSE)
@@ -90,11 +90,11 @@ isPointList <- function(objin) {
 
 orderGraphicsList <- function(objin) {
   # if provided graphics_list, brings it into order
-  if (isGraphicsList(objin)  &&  names(objin) != c("window","surface","renderer","event","width","height","timer_resolution","timer_lag")) {
+  if (isGraphicsList(objin)  &&  names(objin) != c("window","surface","renderer","event","width","height","timer_resolution","timer_lag","frame_duration","last_nowait")) {
     # unordered graphics_list
-    return( list(window = objin$window, surface = objin$surface, renderer = objin$renderer, event = objin$event, width = objin$width, height = objin$height, timer_resolution = objin$timer_resolution, timer_lag = objin$timer_lag ) )
+    return( list(window = objin$window, surface = objin$surface, renderer = objin$renderer, event = objin$event, width = objin$width, height = objin$height, timer_resolution = objin$timer_resolution, timer_lag = objin$timer_lag, frame_duration = objin$frame_duration, last_nowait = objin$last_nowait ) )
   
-  } else if (isGraphicsList(objin)  &&  names(objin) == c("window","surface","renderer","event","width","height","timer_resolution","timer_lag")) {
+  } else if (isGraphicsList(objin)  &&  names(objin) == c("window","surface","renderer","event","width","height","timer_resolution","timer_lag","frame_duration","last_nowait")) {
     # ordered graphics_list
     return(objin)
   } else {

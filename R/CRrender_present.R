@@ -5,7 +5,7 @@
 #' param graphics_list a list created with CRopen(), containing pointers to window, renderer, surface and event
 #' return return times in milliseconds when the call to present returned; this can be used as best estimate when graphical information appeared on screen
 
-CRrender_present <- function(graphics_list, wait) {
+CRrender_present <- function(graphics_list, wait = FALSE) {
 
   if ( !isGraphicsList(graphics_list) ) {
     stop("Input structure must be \"graphics_list\".")

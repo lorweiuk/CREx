@@ -14,7 +14,7 @@ CRwait_fr <- function(graphics_list, fr) {
   
   graphics_list = orderGraphicsList(graphics_list)
   for (i in 1:fr) {
-    out <- .Call("SDLrender_present", graphics_list, PACKAGE = "SDLDLL")
+    out <- .Call("SDLrender_present", graphics_list, 0, PACKAGE = "SDLDLL")
   }
   return(out)
   

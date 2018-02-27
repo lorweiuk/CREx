@@ -21,7 +21,7 @@ CRrender_present <- function(graphics_list, wait = FALSE) {
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  out <- .Call("SDLrender_present", graphics_list, wait, PACKAGE = "SDLDLL")
+  out <- .Call("SDLrender_present", graphics_list, wait, 0, PACKAGE = "SDLDLL")
 
   return(out)
   

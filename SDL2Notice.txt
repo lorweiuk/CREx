@@ -1,1 +1,0 @@
-the SDL2 library contained here is not the original one, but was changed, to provide Windows OS event timestamps and to always block until screen refresh (in Direct3d and -11)

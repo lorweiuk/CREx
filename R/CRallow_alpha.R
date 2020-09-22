@@ -10,6 +10,6 @@ CRallow_alpha <- function(graphics_list) {
 
   } else {
     graphics_list = orderGraphicsList(graphics_list)
-    invisible( .Call("SDLallow_alpha", graphics_list, PACKAGE = "SDLDLL") )
+    invisible( .Call("SDLallow_alpha", graphics_list, PACKAGE = "CREx") )
   }
 }

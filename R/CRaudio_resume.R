@@ -4,5 +4,6 @@
 
 CRaudio_resume <- function() {
 
-  invisible( .Call("SDLaudio_resume", PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLaudio_resume", PACKAGE = "CREx") )
+  
 }

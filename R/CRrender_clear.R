@@ -12,6 +12,6 @@ CRrender_clear <- function(graphics_list) {
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLrender_clear", graphics_list, PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLrender_clear", graphics_list, PACKAGE = "CREx") )
   
 }

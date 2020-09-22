@@ -25,6 +25,6 @@ CRdraw_text <- function(graphics_list, fontlist, index, text, point_list) {
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLdraw_text", graphics_list, fontlist$fontfile[[index]], text, point_list$x, point_list$y, PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLdraw_text", graphics_list, fontlist$fontfile[[index]], text, point_list$x, point_list$y, PACKAGE = "CREx") )
   
 }

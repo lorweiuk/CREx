@@ -5,6 +5,6 @@
 
 CRflush <- function() {
   
-  .Call("SDLflush", PACKAGE = "SDLDLL")
+  invisible( .Call("SDLflush", PACKAGE = "CREx") )
 
 }

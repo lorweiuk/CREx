@@ -9,8 +9,14 @@
 
 CRopen <- function(x=0, y=0, w=0, h=0) {
 
-  out <- .Call( "SDLopen", x, y, w, h, PACKAGE = "SDLDLL" )
+  out <- .Call( "SDLopen", x, y, w, h, PACKAGE = "CREx" )
+  
+  if (is.numeric(out)) {
+      if (out == -1) {
+          return(NULL)
+      }
+  }
+    
   names(out) <- c("window", "surface", "renderer", "event", "width", "height", "timer_resolution", "timer_lag", "frame_duration", "last_nowait", "last_general")
-
   return(out)
 }

@@ -5,5 +5,5 @@
 
 CRwait_ms <- function(ms) {
 
-  invisible( .Call("SDLwait", ms, PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLwait", ms, PACKAGE = "CREx") )
 }

@@ -6,5 +6,5 @@ CRreset_timer_resolution <- function(resolution) {
     stop("Timer resolution must be numeric.")
   }
   
-  invisible( .Call("SDLreset_timer_resolution", resolution, PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLreset_timer_resolution", resolution, PACKAGE = "CREx") )
 }

@@ -15,6 +15,6 @@ CRplay_wav <- function(wav_list, index) {
 
   }
   
-  invisible( .Call("SDLplay_wav", wav_list$wavfile[[index]], PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLplay_wav", wav_list$wavfile[[index]], PACKAGE = "CREx") )
   
 }

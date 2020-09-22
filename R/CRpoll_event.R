@@ -25,15 +25,16 @@ CRpoll_event <- function(graphics_list) {
 
   if ( !isGraphicsList(graphics_list) ) {
     stop("Input structure must be \"graphics_list\".")
-
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  out <- .Call("SDLpoll_event", graphics_list, PACKAGE = "SDLDLL")
-  if (!is.null(out)) {
-      names(out) <- c("type", "code", "x", "y", "timestamp")
-  }
-
-  return(out)
+  out <- .Call("SDLpoll_event", graphics_list, PACKAGE = "CREx")
   
+  if (is.null(out)) {
+      return(out)
+    
+  } else {
+      names(out) <- c("type", "code", "x", "y", "timestamp")
+	    return(out)
+  }
 }

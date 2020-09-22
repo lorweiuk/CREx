@@ -16,6 +16,6 @@ CRdraw_point <- function(graphics_list, point_list) {
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLdraw_point", graphics_list, point_list$x, point_list$y, PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLdraw_point", graphics_list, point_list$x, point_list$y, PACKAGE = "CREx") )
   
 }

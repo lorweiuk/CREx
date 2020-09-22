@@ -4,5 +4,5 @@
 
 CRinit_audio <- function() {
 
-  invisible( .Call("SDLinit_audio", PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLinit_audio", PACKAGE = "CREx") )
 }

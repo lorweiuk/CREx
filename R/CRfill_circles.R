@@ -15,6 +15,6 @@ CRfill_circles <- function(graphics_list, circles_list) {
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLfill_circles", graphics_list, circles_list$centerx, circles_list$centery, circles_list$radius, length(circles_list$centerx), PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLfill_circles", graphics_list, circles_list$centerx, circles_list$centery, circles_list$radius, length(circles_list$centerx), PACKAGE = "CREx") )
   
 }

@@ -19,19 +19,19 @@ CRclose <- function(...) {
       
       if ( isGraphicsList(input[[i]]) ) {
         input[[i]] = orderGraphicsList(input[[i]]);
-        output <- .Call("SDLclose", input[[i]], PACKAGE = "SDLDLL")
+        output <- .Call("SDLclose", input[[i]], PACKAGE = "CREx")
 
       } else if ( isWavList(input[[i]]) ) {
-        invisible( .Call("SDLclose_audio", input[[i]]$wavfile, length(input[[i]]$wavfile), PACKAGE = "SDLDLL") )
+        invisible( .Call("SDLclose_audio", input[[i]]$wavfile, length(input[[i]]$wavfile), PACKAGE = "CREx") )
 
       } else if ( isImageList(input[[i]]) ) {
-        invisible( .Call("SDLclose_image", input[[i]]$imagefile, length(input[[i]]$imagefile), PACKAGE = "SDLDLL") )
+        invisible( .Call("SDLclose_image", input[[i]]$imagefile, length(input[[i]]$imagefile), PACKAGE = "CREx") )
 
       } else if ( isTextureList(input[[i]]) ) {
-        invisible( .Call("SDLclose_texture", input[[i]]$texturefile, length(input[[i]]$texturefile), PACKAGE = "SDLDLL") )
+        invisible( .Call("SDLclose_texture", input[[i]]$texturefile, length(input[[i]]$texturefile), PACKAGE = "CREx") )
 
       } else if ( isFontList(input[[i]]) ) {
-        invisible( .Call("SDLclose_font", input[[i]]$fontfile, length(input[[i]]$fontfile), PACKAGE = "SDLDLL") )
+        invisible( .Call("SDLclose_font", input[[i]]$fontfile, length(input[[i]]$fontfile), PACKAGE = "CREx") )
       }
         
     }

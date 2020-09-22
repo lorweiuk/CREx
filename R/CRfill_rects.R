@@ -16,6 +16,6 @@ CRfill_rects <- function(graphics_list, rect_list) {
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLfill_rects", graphics_list, rect_list$x, rect_list$y, rect_list$w, rect_list$h, length(rect_list$x), PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLfill_rects", graphics_list, rect_list$x, rect_list$y, rect_list$w, rect_list$h, length(rect_list$x), PACKAGE = "CREx") )
   
 }

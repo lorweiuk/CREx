@@ -8,12 +8,21 @@
 #' return pointer to a texture structure
 
 CRcreate_texture <- function(graphics_list, texture_list, widthin, heightin) {
+
   if ( !isGraphicsList(graphics_list) ) {
     stop("Input structure must be \"graphics list\".")
   } 
+  
   graphics_list = orderGraphicsList(graphics_list)
-  out <- .Call("SDLcreate_texture", graphics_list, widthin, heightin, PACKAGE = "SDLDLL")
+  out <- .Call("SDLcreate_texture", graphics_list, widthin, heightin, PACKAGE = "CREx")
     
-  texture_list$texturefile <- c( texture_list$texturefile, out )
-  return(texture_list)
+  if (is.numeric(out)) {
+    if (out == -1) {
+      return(NULL)
+    }
+  }
+  
+	texture_list$texturefile <- c( texture_list$texturefile, out )
+	return(texture_list)
+
 }

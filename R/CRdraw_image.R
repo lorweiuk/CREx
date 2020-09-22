@@ -10,21 +10,21 @@ CRdraw_image <- function(graphics_list, image_list, index, rect_list) {
 
   if (!isGraphicsList(graphics_list)) {
     stop("Input structure must be \"graphics list\".")
-
   } 
+  
   if (!isImageList(image_list)) {
     stop("Input structure must be \"image list\".")
-
   }
+  
   if (index > length(image_list$imagefile)) {
     stop("Index is out of range of image_list$imagefile.")
-
   }
+  
   if (!isRectList(rect_list)) {
     stop("Input structure must be \"rect list\".")
   }
 
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLdraw_image", graphics_list, image_list$imagefile[[index]], rect_list$x, rect_list$y, rect_list$w, rect_list$h, PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLdraw_image", graphics_list, image_list$imagefile[[index]], rect_list$x, rect_list$y, rect_list$w, rect_list$h, PACKAGE = "CREx") )
 
 }

@@ -11,6 +11,6 @@ CRreset_render_target <- function(graphics_list) {
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLset_render_target_reset", graphics_list, PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLset_render_target_reset", graphics_list, PACKAGE = "CREx") )
   
 }

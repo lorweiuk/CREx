@@ -16,6 +16,6 @@ CRdraw_line <- function(graphics_list, line_list) {
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLdraw_line", graphics_list, line_list$x1, line_list$y1, line_list$x2, line_list$y2, PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLdraw_line", graphics_list, line_list$x1, line_list$y1, line_list$x2, line_list$y2, PACKAGE = "CREx") )
   
 }

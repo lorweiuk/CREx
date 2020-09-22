@@ -6,10 +6,11 @@
 #' color_list a list defining a color in RGB, must contain element r, g, b (a is ignored)
 
 CRcolor_to_transparent <- function(surfacep, color_list) {
+  
   if ( !isColorList(color_list) ) {
     stop("Input structure must be \"color list\".")
-    
-  } else {
-    invisible( .Call("SDLcolor_to_transparent", surfacep, color_list$r, color_list$g, color_list$b, PACKAGE = "SDLDLL") )
-  }
+  } 
+  
+  invisible( .Call("SDLcolor_to_transparent", surfacep, color_list$r, color_list$g, color_list$b, PACKAGE = "CREx") )
+  
 }

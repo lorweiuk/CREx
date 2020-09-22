@@ -16,10 +16,10 @@ CRset_render_color <- function(graphics_list, color_list) {
   
   graphics_list = orderGraphicsList(graphics_list)
   if ( !("a" %in% names(color_list)) ) {
-    invisible( .Call("SDLset_render_color", graphics_list, color_list$r, color_list$g, color_list$b, 255, PACKAGE = "SDLDLL") )
+    invisible( .Call("SDLset_render_color", graphics_list, color_list$r, color_list$g, color_list$b, 255, PACKAGE = "CREx") )
 
   } else {
-    invisible( .Call("SDLset_render_color", graphics_list, color_list$r, color_list$g, color_list$b, color_list$a, PACKAGE = "SDLDLL") )
+    invisible( .Call("SDLset_render_color", graphics_list, color_list$r, color_list$g, color_list$b, color_list$a, PACKAGE = "CREx") )
 
   }
 }

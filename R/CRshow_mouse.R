@@ -4,5 +4,5 @@
 
 CRshow_mouse <- function() {
 
-  invisible( .Call("SDLshow_mouse", PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLshow_mouse", PACKAGE = "CREx") )
 }

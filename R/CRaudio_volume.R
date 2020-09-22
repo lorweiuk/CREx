@@ -4,5 +4,13 @@
 
 CRaudio_volume <- function(volume) {
 
-  invisible( .Call("SDLaudio_volume", volume, PACKAGE = "SDLDLL") )
+  out <- .Call("SDLaudio_volume", volume, PACKAGE = "CREx")
+  
+  if (is.numeric(out)) {
+    if (out == -1) {
+      return(NULL)
+    }
+  }
+  
+  return(out)
 }

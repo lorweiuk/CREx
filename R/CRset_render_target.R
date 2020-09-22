@@ -18,6 +18,6 @@ CRset_render_target <- function(graphics_list, texture_list, index) {
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLset_render_target_texture", graphics_list, texture_list$texturefile[[index]], PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLset_render_target_texture", graphics_list, texture_list$texturefile[[index]], PACKAGE = "CREx") )
   
 }

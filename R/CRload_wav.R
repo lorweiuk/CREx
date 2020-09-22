@@ -7,9 +7,15 @@
 
 CRload_wav <- function(wav_list, wavfile) {
 
-  out <- .Call("SDLload_wav", wavfile, PACKAGE = "SDLDLL")
+  out <- .Call("SDLload_wav", wavfile, PACKAGE = "CREx")
 
+  if (is.numeric(out)) {
+      if (out == -1) {
+          return(NULL)
+      }
+  }
+  
   wav_list$wavfile <- c( wav_list$wavfile, out )
-  wav_list$names   <- c( wav_list$names, as.character(wavfile))
-  return(wav_list)
+	wav_list$names   <- c( wav_list$names, as.character(wavfile))
+	return(wav_list)
 }

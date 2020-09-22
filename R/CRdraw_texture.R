@@ -50,6 +50,6 @@ CRdraw_texture <- function(graphics_list, texture_list, index, texture_rect = li
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLdraw_texture", graphics_list, texture_list$texturefile[[index]], texture_rect$x, texture_rect$y, texture_rect$w, texture_rect$h, target_rect$x, target_rect$y, target_rect$w, target_rect$h, angle, center_point$x, center_point$y, PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLdraw_texture", graphics_list, texture_list$texturefile[[index]], texture_rect$x, texture_rect$y, texture_rect$w, texture_rect$h, target_rect$x, target_rect$y, target_rect$w, target_rect$h, angle, center_point$x, center_point$y, PACKAGE = "CREx") )
   
 }

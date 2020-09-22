@@ -7,10 +7,9 @@ CRget_time <- function(graphics_list) {
 
   if ( !isGraphicsList(graphics_list) ) {
     stop("Input structure must be \"graphics list\".")
-    
   }
   
   graphics_list = orderGraphicsList(graphics_list)
-  out <- .Call("SDLget_time", graphics_list, PACKAGE = "SDLDLL")
+  out <- .Call("SDLget_time", graphics_list, PACKAGE = "CREx")
   return(out)
 }

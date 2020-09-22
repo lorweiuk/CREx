@@ -4,5 +4,6 @@
 
 CRaudio_pause <- function() {
 
-  invisible( .Call("SDLaudio_pause", PACKAGE = "SDLDLL") )
+  invisible( .Call("SDLaudio_pause", PACKAGE = "CREx") )
+  
 }

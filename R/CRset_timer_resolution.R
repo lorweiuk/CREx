@@ -6,7 +6,13 @@ CRset_timer_resolution <- function(resolution) {
     stop("Timer resolution must be numeric.")
   }
   
-  resout <- .Call("SDLset_timer_resolution", resolution, PACKAGE = "SDLDLL")
+  resout <- .Call("SDLset_timer_resolution", resolution, PACKAGE = "CREx")
+  
+  if (is.numeric(out)) {
+    if (resout == -1) {
+      return(NULL)
+    }
+  }
   
   return(resout)
 }

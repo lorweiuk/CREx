@@ -70,6 +70,15 @@ isCircleList <- function(objin) {
   }
 }
 
+isPolygonList <- function(objin) {
+  # check if objin is polygon_list
+  if ( "x" %in% names(objin) && "y" %in% names(objin) ) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}
+
 isLineList <- function(objin) {
   # check if objin is line_list
   if ( "x1" %in% names(objin) && "y1" %in% names(objin) && "x2" %in% names(objin) && "y2" %in% names(objin) ) {

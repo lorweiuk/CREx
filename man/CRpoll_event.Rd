@@ -16,11 +16,11 @@
     Returns response_list specifying the polled response (list is null if no event to be polled).
 }
 \details{
-  \code{CRpoll_event()} returns a \emph{italics}{response_list}.
+  \code{CRpoll_event()} returns a \emph{response_list}.
   
-  Distinguish type of reaction (keyboard, mouse, etc.) by element \emph{italics}{type}. Possible types are "key_down", "key_up", "mouse_button_down", "mouse_button_up", "mouse_motion" and "quit".
+  Distinguish type of reaction (keyboard, mouse, etc.) by element \emph{type}. Possible types are "key_down", "key_up", "mouse_button_down", "mouse_button_up", "mouse_motion" and "quit".
   
-  Distinguish specific reaction by element \emph{italics}{code}. For example, the left mouse button is code 1, the right button is code 3. Keyboard codes can be looked up at https://wiki.libsdl.org/SDLKeycodeLookup.
+  Distinguish specific reaction by element \emph{code}. For example, the left mouse button is code 1, the right button is code 3. Keyboard codes can be looked up at https://wiki.libsdl.org/SDLKeycodeLookup.
   
-  For mouse events, elements \emph{italics}{x} and \emph{italics}{y} indicate the mouse's position in the window.
+  For mouse events, elements \emph{x} and \emph{y} indicate the mouse's position in the window.
 }

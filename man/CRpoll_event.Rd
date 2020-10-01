@@ -13,23 +13,14 @@
     \item{graphics_list}{a list containing pointers to window, renderer etc. created with \code{CRopen}.}
 }
 \value{
-    Returns list of data specifying response polled (list is null if no event to polled).
+    Returns response_list specifying the polled response (list is null if no event to be polled).
 }
 \details{
-  Distinguish type of reaction (key,mouse,etc.) by $type.
-  Distinguish specific reaction by code (which key was pressed? which mouse button pressed?).
-  Keycodes can be looked up at https://wiki.libsdl.org/SDLKeycodeLookup.
+  \code{CRpoll_event()} returns a \emph{italics}{response_list}.
   
-  Mouse button code: 1 = left button, 2 = middle button, 3 = right button.
+  Distinguish type of reaction (keyboard, mouse, etc.) by element \emph{italics}{type}. Possible types are "key_down", "key_up", "mouse_button_down", "mouse_button_up", "mouse_motion" and "quit".
   
-  Mouse motion is always code == 1, x and y indicate x and y coordinates.
+  Distinguish specific reaction by element \emph{italics}{code}. For example, the left mouse button is code 1, the right button is code 3. Keyboard codes can be looked up at https://wiki.libsdl.org/SDLKeycodeLookup.
   
-  Code -1 means quit-X was pressed.
-
-  Types:
-  1025 mouse button down
-  1026 mouse button up
-  1024 mouse motion
-  768 key down
-  769 key up
+  For mouse events, elements \emph{italics}{x} and \emph{italics}{y} indicate the mouse's position in the window.
 }

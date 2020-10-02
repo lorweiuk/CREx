@@ -1,7 +1,7 @@
 \name{CRaudio_resume}
 \alias{CRaudio_resume}
 \title{
-    Resumes the audio previously paused using \code{CRaudio_pause}.
+    Resumes audio.
 }
 \usage{
 CRaudio_resume()

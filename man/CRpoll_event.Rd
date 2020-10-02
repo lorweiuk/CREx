@@ -23,4 +23,6 @@
   Distinguish specific reaction by element \emph{code}. For example, the left mouse button is code 1, the right button is code 3. Keyboard codes can be looked up at https://wiki.libsdl.org/SDLKeycodeLookup.
   
   For mouse events, elements \emph{x} and \emph{y} indicate the mouse's position in the window.
+
+  Element \emph{timestamp} indicates when the OS registered the response.
 }

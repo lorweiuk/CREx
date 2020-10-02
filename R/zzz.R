@@ -51,3 +51,29 @@
     try( library.dynam.unload( chname="CREx",          libpath = paste0(path,"/",libname) ) )
 
 }
+
+.CRset_timer_resolution <- function(resolution) {
+  
+  if ( !is.numeric(resolution) ) {
+    stop("Timer resolution must be numeric.")
+  }
+  
+  resout <- .Call("SDLset_timer_resolution", resolution, PACKAGE = "CREx")
+  
+  if (is.numeric(resout)) {
+    if (resout == -1) {
+      return(NULL)
+    }
+  }
+  
+  return(resout)
+}
+
+.CRreset_timer_resolution <- function(resolution) {
+  
+  if ( !is.numeric(resolution) ) {
+    stop("Timer resolution must be numeric.")
+  }
+  
+  invisible( .Call("SDLreset_timer_resolution", resolution, PACKAGE = "CREx") )
+}

@@ -14,6 +14,9 @@ CRdraw_points <- function(graphics_list, point_list) {
     stop("Input structure must be \"point list\".")
     
   }
+  if (length(point_list$x) != length(point_list$y)) {
+    stop("Vector elements of \"point list \" must be the same length.")
+  }
   
   graphics_list = orderGraphicsList(graphics_list)
   invisible( .Call("SDLdraw_points", graphics_list, point_list$x, point_list$y, length(point_list$x), PACKAGE = "CREx") )

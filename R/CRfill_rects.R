@@ -14,6 +14,9 @@ CRfill_rects <- function(graphics_list, rect_list) {
     stop("Input structure must be \"rect list\".")
     
   }
+  if (length(rect_list$x) != length(rect_list$y) || length(rect_list$x) != length(rect_list$w) || length(rect_list$x) != length(rect_list$h)) {
+    stop("Vector elements of \"rect list\" must be the same length.")
+  }
   
   graphics_list = orderGraphicsList(graphics_list)
   invisible( .Call("SDLfill_rects", graphics_list, rect_list$x, rect_list$y, rect_list$w, rect_list$h, length(rect_list$x), PACKAGE = "CREx") )

@@ -6,7 +6,7 @@
 #' param x x coordinate of upper-left corner of text
 #' param y y coordinate of upper-left corner of text
 
-CRdraw_text <- function(graphics_list, fontlist, index, text, point_list) {
+CRdraw_text <- function(graphics_list, fontlist, index, text, point_list, wrap_length = NULL) {
 
   if ( !isGraphicsList(graphics_list) ) {
     stop("Input structure must be \"graphics list\".")
@@ -23,8 +23,20 @@ CRdraw_text <- function(graphics_list, fontlist, index, text, point_list) {
   if (index > length(fontlist$fontfile)) {
     stop("Index exceeds length of fontlist$fontfile.")
   }
+  if (!is.null(wrap_length) && (!is.numeric(wrap_length) || wrap_length < 0)) {
+    stop("Wrap_length must be numeric and non-negative.")
+  }
   
   graphics_list = orderGraphicsList(graphics_list)
-  invisible( .Call("SDLdraw_text", graphics_list, fontlist$fontfile[[index]], text, point_list$x, point_list$y, PACKAGE = "CREx") )
+  
+  if (is.null(wrap_length)) {
+    
+    invisible( .Call("SDLdraw_text", graphics_list, fontlist$fontfile[[index]], text, point_list$x, point_list$y, -1, PACKAGE = "CREx") )
+    
+  } else {
+    
+    invisible( .Call("SDLdraw_text", graphics_list, fontlist$fontfile[[index]], text, point_list$x, point_list$y, wrap_length, PACKAGE = "CREx") )
+    
+  }
   
 }

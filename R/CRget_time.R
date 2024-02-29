@@ -3,13 +3,9 @@
 #' Get time in milliseconds since system startup was called
 #' return time in milliseconds since system startup was called
 
-CRget_time <- function(graphics_list) {
+CRget_time <- function() {
 
-  if ( !isGraphicsList(graphics_list) ) {
-    stop("Input structure must be \"graphics list\".")
-  }
+  out <- .Call("SDLget_time", PACKAGE = "CREx")
   
-  graphics_list = orderGraphicsList(graphics_list)
-  out <- .Call("SDLget_time", graphics_list, PACKAGE = "CREx")
   return(out)
 }

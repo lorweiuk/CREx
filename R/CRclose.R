@@ -32,6 +32,9 @@ CRclose <- function(...) {
 
       } else if ( isFontList(input[[i]]) ) {
         invisible( .Call("SDLclose_font", input[[i]]$fontfile, length(input[[i]]$fontfile), PACKAGE = "CREx") )
+      
+      } else if ( isControllerList(input[[i]]) ) {
+        invisible( .Call("SDLclose_controller", input[[i]]$controller, PACKAGE = "CREx"))
       }
         
     }

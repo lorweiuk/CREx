@@ -14,7 +14,7 @@
 
   try( library.dynam( chname="SDL2_mixer", package=libname, lib.loc=path) )
   try( library.dynam( chname="SDL2_ttf",   package=libname, lib.loc=path) )
-  try( library.dynam( chname="smpeg2",     package=libname, lib.loc=path) )
+  try( library.dynam( chname="libmpg123-0",package=libname, lib.loc=path) )
   try( library.dynam( chname="zlib1",      package=libname, lib.loc=path) )
 
   try( library.dynam( chname="libtiff-5",     package=libname, lib.loc=path) )
@@ -41,7 +41,7 @@
 
     try( library.dynam.unload( chname="SDL2_mixer",  libpath = paste0(path,"/",libname) ) )
     try( library.dynam.unload( chname="SDL2_ttf",    libpath = paste0(path,"/",libname) ) )
-    try( library.dynam.unload( chname="smpeg2",      libpath = paste0(path,"/",libname) ) )
+    try( library.dynam.unload( chname="libmpg123-0", libpath = paste0(path,"/",libname) ) )
     try( library.dynam.unload( chname="zlib1",       libpath = paste0(path,"/",libname) ) )
 
     try( library.dynam.unload( chname="libtiff-5",     libpath = paste0(path,"/",libname) ) )

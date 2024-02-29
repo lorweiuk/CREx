@@ -89,7 +89,7 @@ CRdraw_rect( )      CRfill_rect( )
 CRdraw_rects( )     CRfill_rects( )
 CRdraw_text( )
 CRdraw_texture( )
-CRfill_polygon( )
+CRdraw_polygon()    CRfill_polygon( )
 ```
 
 ## Choice-RT task
@@ -100,9 +100,9 @@ To run a simple choice-RT task:
 gs <- CRopen(x = 50, y = 50, w = 900, h = 600)
 num_trials <- 20 # number of trials
 
-# keycode 'f'; can be looked up at https://wiki.libsdl.org/SDLKeycodeLookup
-left_button <- 102
-right_button <- 106
+# keycode 'f' and 'j'
+left_button <- utf8ToInt("f")
+right_button <- utf8ToInt("j")
 
 # condition indicates target side
 conditions <- sample(c("L", "R"), size = num_trials, replace = T)
@@ -154,66 +154,27 @@ for (trial in 1:num_trials) {
 
  CRwait_ms(1) # avoid hot loop
  }
+ 
+ CRflush(gs) # flush remaining responses
 }
 CRclose(gs)
 ```
 
 There is a lot happening in this example, but it illustrates most of what is needed to program a simple experiment. In this task, per-trial two rectangles are shown, one on the left and one on the right. One of them is green, the other is red. The participant is supposed to press the ‘f’ key if the green rectangle is on the left, and the ‘j’ key if it is on the right. Each trial’s response and reaction time (RT) is stored.
-First, a window is opened. Then, a number of variables and vectors are defined that dictate what the experiment is supposed to do. For example, the key codes of the f- and j-keys are stored in variables. Key codes can be looked up at https://wiki.libsdl.org/SDLKeycodeLookup. The conditions vector consists of 20 letters, each of which tells you whether the current trial is a left-target or right-target trial. We use the responses matrix to store the participant’s behavioral data, with column 1 for the responses and column 2 for RTs.
-Next, we define the positions for the left rectangle and right rectangle. Until now we always indicated positions in absolute pixel values, but now we start defining them relative to the window: the graphics structure gs holds the width and height of the window, which we can retrieve via
 
-```
-gs$width
-```
+First, a window is opened. Then, a number of variables and vectors are defined that dictate what the experiment is supposed to do. For example, the Utf-8 key codes of the f- and j-keys are stored in variables. Key codes can also be looked up at https://wiki.libsdl.org/SDLKeycodeLookup. The conditions vector consists of 20 letters, each of which tells you whether the current trial is a left-target or right-target trial. We use the responses matrix to store the participant’s behavioral data, with column 1 for the responses and column 2 for RTs.
 
-and
+Next, we define the positions for the left rectangle and right rectangle. Until now we always indicated positions in absolute pixel values, but now we start defining them relative to the window: the graphics structure gs holds the width and height of the window.
 
-```
-gs$height
-```
+Finally, when we call CRrender_present(), we assign the result to stim_time. This result is an estimate of when the stimulus appeared on the screen. If you want to compute RTs, they will usually be relative to this time point, so you should keep track of it. Note that this kind of time measurement is not as precise as many people believe. If your project depends on an exact measurement of this time point – the time of physical retinal stimulation from the screen – there is no real way around physically measuring it yourself.
 
-Thus, a position of 
-
-```
-x = gs$width / 2, y = gs$height / 2
-```
-
-sits at the center of our window. We want the left rectangle to sit left of the window’s center,
-so we set its x-coordinate to
-
-```
-x = gs$width / 2 – 100
-```
-
-The subtracted amount (100) is dictated by the rectangles width, which we set to 50, and the space we want to see between the two rectangles. We also move the rectangles up a bit
-
-```
-y = gs$height / 2 – 25
-```
-
-so that their center sits at the center of the screen. Before we start the task, we also define the experiment’s colors (green, red, and a grey background).
-Next comes the trial loop. This loop is the central part of most experiments. It loops over our trials, and inside we place the code that executes on each trial. Everything that needs to repeat on every trial – and everything that changes on a trial-by-trial basis – goes in the trial loop. The loops control variable is called trial, and we can use it to keep track of which trial we are currently in. A major part of the loop consists of drawing the current trial’s stimuli. First we clear the background, then show the resulting empty screen, and wait 1.5 seconds (our intertrial interval). Next, we clear the window again, draw our two rectangles, and show them in the window. Note that the rectangles’ positions passed to CRfill_rect() are put inside a conditional statement:
-
-```
-if (conditions[trial] == "L") left_rect else right_rect
-```
-
-Thus, on left-target trials – in which conditions[trial] == “L” is TRUE – the left_rect list is returned. This makes sense, because we are currently drawing the green rectangle, which on left-target trials should be … on the left. When we draw the red rectangle immediately afterwards, the expressions returning the rectangles are reversed. Finally, when we call CRrender_present(), we assign the result to stim_time. This result is an estimate of when the stimulus appeared on the screen. If you want to compute RTs, they will usually be relative to this time point, so you should keep track of it. Note that this kind of time measurement (when did my stimulus actually appear on the screen?) is not nearly as precise as many people believe.
-If your project depends on an exact measurement of this time point – the time of physical retinal stimulation from the screen – there is no real way around physically measuring it yourself.
-After having presented our two rectangles, we enter the response loop. This is the second major part of our trial loop. This loop’s task is to keep checking whether a response was given, in our case whether the f- or j-key was hit. This loop actually consists of two nested loops. The outer loop keeps running until a response was found (that is, until r_found is TRUE). The inner loop keeps running until
+The last major part of our trial loop is the response loop. This loop’s task is to keep checking whether a response was given, in our case whether the f- or j-key was hit. This loop actually consists of two nested loops. The outer loop keeps running until a response was found (that is, until r_found is TRUE). The inner loop keeps running until
 
 ```
 respout <- CRpoll_event(gs)
 ```
 
-returns NULL (that is, until there are no more responses waiting to be processed). The function CRpoll_event(gs) simply retrieves the next response currently waiting and stores it in respout. If this is not NULL, we process it. Should there be no responses left, our outer loop still continues and we keep checking, but we first make a very short break:
-
-```
-CRwait_ms(1) # avoid hot loop
-```
-
-During processing the current response in respout, we check its type, which we hope to be key_down. This indicates that a keyboard key was pressed. We also check respout’s code element, which is the key_code of the current response. As defined at the beginning of the script, we want this key_code to be either 102 (f-key) or 106 (j-key). If any of these conditions is met, we note down the behavioral data by storing the code and the RT. The RT is computed as the
-timestamp element of respout minus the stim_time. Finally, we set r_found to TRUE to end the outer loop.
+returns NULL (that is, until there are no more responses waiting to be processed). The function CRpoll_event(gs) simply retrieves the next response currently waiting and stores it in respout. During processing the current response in respout, we check its type, which we hope to be key_down. This indicates that a keyboard key was pressed. We also check respout’s code element, which is the key_code of the current response. As defined at the beginning of the script, we want this key_code to be either the Utf-8 code for 'f' or 'j'. or 106 (j-key). If any of these conditions is met, we note down the behavioral data by storing the code and the RT. The RT is computed as the timestamp element of respout minus the stim_time. Finally, we set r_found to TRUE to end the outer loop.
 
 ## Images and textures
 
@@ -231,7 +192,7 @@ CRrender_clear(gs)
 
 # draw image to texture
 CRdraw_image(gs, image_list, 1, list(x = gs$width / 2 - 250, y = gs$height / 2 - 250, w = 500, h = 500))
-CRallow_alpha(gs) # allow using alpha values when specifying colors
+CRset_blend_mode(gs, "blend") # allow using alpha values when specifying colors
 
 for (i in 1:300) {
  # draw 300 random filled circles
@@ -255,7 +216,7 @@ Furthermore, the use of textures is illustrated. Drawing all your stimuli to the
 
 You can create a texture using CRcreate_texture(): you provide a texture_list as input (again, this can be an empty list) as well as the intended dimensions of the texture (width and height). The returned texture_list has your new texture appended to it. To draw to this texture, you first need to call CRset_render_target(gs, texture_list, 1), where the “1” is an index specifying the position of your intended texture in the texture_list. After resetting your window as the rendering target using CRreset_render_target(gs), you can draw your prepared texture to the screen in one go using CRdraw_texture(gs, texture_list, 1), where the “1” is again an index into your texture_list. The advantage this affords is that you can prepare your stimuli during less computationally intensive periods of the task, such as the inter-trial interval. The function CRdraw_texture() also accepts other arguments, such as a rotation angle.
 
-The example also illustrates how CRallow_alpha() is called in order to allow the use of transparency for your stimuli, by specifying an additional element “a” in your color_lists. Lastly, if you have allocated additional resources during your task (such as images or textures), you simply pass the lists to CRclose() to de-allocate them.
+The example also illustrates how CRset_blend_mode() is called in order to allow the use of transparency for your stimuli, by specifying an additional element “a” in your color_lists. Lastly, if you have allocated additional resources during your task (such as images or textures), you simply pass the lists to CRclose() to de-allocate them.
 
 ## Sound and text
 
@@ -303,15 +264,15 @@ while (!end_clicked) {
  while (!is.null(respout <- CRpoll_event(gs))) {
   if (respout$type == "mouse_button_down" && abs(respout$x - 50) < 50 && abs(respout$y - 100) < 50) {
    # Play button clicked
-   CRplay_wav(wave_list, 1)
+   CRplay_wav(wave_list, 1, 0)
 
   } else if (respout$type == "mouse_button_down" && abs(respout$x - 50) < 50 && abs(respout$y - 200) < 50) {
    # Pause button clicked
-   CRaudio_pause()
+   CRaudio_pause(0)
 
   } else if (respout$type == "mouse_button_down" && abs(respout$x - 50) < 50 && abs(respout$y - 300) < 50) {
    # Resume button clicked
-   CRaudio_resume()
+   CRaudio_resume(0)
 
   } else if (respout$type == "mouse_button_down" && abs(respout$x - 50) < 50 && abs(respout$y - 400) < 50) {
    # End button clicked
@@ -330,4 +291,4 @@ CRload_wav() takes as arguments a (possibly empty) wav_list, as well as a string
 To play, pause and resume sound, use CRplay_wav(), CRaudio_pause() and CRaudio_resume(). To change the sound’s volume, you can use CRaudio_volume(). In the response loop, the script checks which sound option is clicked by the mouse. This is simply done by checking if a mouse click occurred – that is, checking for response type “mouse_button_down”. If this happens, the response loop checks whether the position of the mouse (respout elements x and y) was within 50 pixels of any of the audio options. If this was the case, the appropriate action is taken.
 
 # Limitations
-The CREx package is provided as-is, without any guarantees regarding its functionalities, the results obtained when using it or its general reliability. I have used most of the functions in CREx for several years now to quickly and easily program cognitive experiments, and have found them useful and reliable. However, I make no promises when CREx is run on other systems, and there has been absolutely no testing it on a wide variety of systems. Furthermore, much of CREx is just a (limited) way to make use of the Simple Direct Media Library (SDL2) in R. If you find it useful, much of that is thanks to the people developing SDL2.
+The CREx package is provided as-is, without any guarantees regarding its functionalities, the results obtained when using it or its general reliability. I have used most of the functions in CREx for several years now to quickly and easily program cognitive experiments, and have found them useful and reliable. However, I make no promises when CREx is run on other systems. Much of CREx is just a (limited) way to make use of the Simple Direct Media Library (SDL2) in R. If you find it useful, much of that is thanks to the people developing SDL2.

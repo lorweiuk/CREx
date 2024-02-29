@@ -4,6 +4,8 @@
     Resumes audio.
 }
 \usage{
-CRaudio_resume()
+CRaudio_resume(channel)
 }
-
+\arguments{
+    \item{channel}{channel to resume.}
+}

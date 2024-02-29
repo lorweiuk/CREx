@@ -14,6 +14,7 @@ CRopen(x = 0, y = 0, w = 0, h = 0)
     \item{y}{Y position of window.}
     \item{w}{width of window.}
     \item{h}{height of window.}
+    \item{param}{optional vector of flags ("render_scale_quality", "borderless", "resizable", "maximized", "minimized", "high_dpi", "no_vsync", "no_input_focus", "no_on_top").}
 }
 \value{
     Returns a graphics_list containing pointers to graphics structures and integers of width and height of window, as well as timer resolution and timer lag.

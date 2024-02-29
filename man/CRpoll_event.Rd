@@ -20,7 +20,9 @@
   
   Distinguish type of reaction (keyboard, mouse, etc.) by element \emph{type}. Possible types are "key_down", "key_up", "mouse_button_down", "mouse_button_up", "mouse_motion" and "quit".
   
-  Distinguish specific reaction by element \emph{code}. For example, the left mouse button is code 1, the right button is code 3. Keyboard codes can be looked up at https://wiki.libsdl.org/SDLKeycodeLookup.
+  Distinguish specific reaction by element \emph{code}. For example, the left mouse button is code 1, the right button is code 3. Keyboard codes can be looked up at https://wiki.libsdl.org/SDLKeycodeLookup and converted in R using intToUtf8().
+  
+  \emph{state} encodes several keyboard states (e.g. CTRL being pressed).
   
   For mouse events, elements \emph{x} and \emph{y} indicate the mouse's position in the window.
 

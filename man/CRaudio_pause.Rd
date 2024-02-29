@@ -4,6 +4,8 @@
     Pauses audio being played.
 }
 \usage{
-CRaudio_pause()
+CRaudio_pause(channel)
 }
-
+\arguments{
+    \item{channel}{channel to pause.}
+}

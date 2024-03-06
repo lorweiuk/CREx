@@ -1,7 +1,5 @@
 .onLoad <- function(path, libname) {
   
-  print("loadBinaries")
-  
   try( library.dynam( chname="libjpeg-9",    package=libname, lib.loc=path) )
   try( library.dynam( chname="libmodplug-1", package=libname, lib.loc=path) )
   try( library.dynam( chname="libogg-0",    package=libname, lib.loc=path) )
@@ -27,8 +25,6 @@
 
 .onUnload <- function(path, libname) {
 
-    print("unloadBinaries")
-
     try( library.dynam.unload( chname="libjpeg-9",    libpath = paste0(path,"/",libname) ) )
     try( library.dynam.unload( chname="libmodplug-1", libpath = paste0(path,"/",libname) ) )
     try( library.dynam.unload( chname="libogg-0",    libpath = paste0(path,"/",libname) ) )
@@ -53,27 +49,27 @@
 }
 
 .CRset_timer_resolution <- function(resolution) {
-  
+
   if ( !is.numeric(resolution) ) {
     stop("Timer resolution must be numeric.")
   }
-  
+
   resout <- .Call("SDLset_timer_resolution", resolution, PACKAGE = "CREx")
-  
+
   if (is.numeric(resout)) {
     if (resout == -1) {
       return(NULL)
     }
   }
-  
+
   return(resout)
 }
 
 .CRreset_timer_resolution <- function(resolution) {
-  
+
   if ( !is.numeric(resolution) ) {
     stop("Timer resolution must be numeric.")
   }
-  
+
   invisible( .Call("SDLreset_timer_resolution", resolution, PACKAGE = "CREx") )
 }

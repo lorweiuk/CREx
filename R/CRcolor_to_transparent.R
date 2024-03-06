@@ -5,20 +5,55 @@
 #' index is the index of the image for which transparency will be changed
 #' color_list a list defining a color in RGB, must contain element r, g, b (a is ignored)
 
-CRcolor_to_transparent <- function(image_list, index, color_list) {
+CRcolor_to_transparent <- function(image_list, index, color_list, status = NULL) {
   
   if ( !isColorList(color_list) ) {
-    stop("Input structure must be \"color list\".")
-  } 
-  
-  if (!isImageList(image_list)) {
-    stop("Input structure must be \"image list\".")
+    
+    warning("Input structure must be \"color list\".")
+    
+    if (isStatus(status)) {
+      
+      invisible( .Call("SDLset_status", status, 0, "Channel must be integer.", PACKAGE = "CREx") )
+      
+    }
+    
+  } else {
+    
+    if (!isImageList(image_list)) {
+      
+      warning("Input structure must be \"image list\".")
+      
+      if (isStatus(status)) {
+        
+        invisible( .Call("SDLset_status", status, 0, "Channel must be integer.", PACKAGE = "CREx") )
+        
+      }
+      
+    } else {
+      
+      
+      if (index > length(image_list$imagefile)) {
+        
+        warning("Index is longer than \"image list\".")
+        
+        if (isStatus(status)) {
+          
+          invisible( .Call("SDLset_status", status, 0, "Channel must be integer.", PACKAGE = "CREx") )
+          
+        }
+        
+      } else {
+        
+        if (isStatus(status)) {
+          
+          invisible( .Call("SDLcolor_to_transparent", image_list$imagefile[[index]], color_list$r, color_list$g, color_list$b, status, PACKAGE = "CREx") )
+          
+        } else {
+          
+          invisible( .Call("SDLcolor_to_transparent", image_list$imagefile[[index]], color_list$r, color_list$g, color_list$b, NULL, PACKAGE = "CREx") )
+          
+        }
+      }
+    }
   }
-  
-  if (index > length(image_list$imagefile)) {
-    stop("Index is longer than \"image list\".")
-  }
-  
-  invisible( .Call("SDLcolor_to_transparent", image_list$imagefile[[index]], color_list$r, color_list$g, color_list$b, PACKAGE = "CREx") )
-  
 }

@@ -3,9 +3,15 @@
 #' Get time in milliseconds since system startup was called
 #' return time in milliseconds since system startup was called
 
-CRget_time <- function() {
+CRget_time <- function(status = NULL) {
 
-  out <- .Call("SDLget_time", PACKAGE = "CREx")
-  
-  return(out)
+  if (isStatus(status)) {
+    
+    invisible(.Call("SDLget_time", status, PACKAGE = "CREx"))
+    
+  } else {
+    
+    invisible(.Call("SDLget_time", NULL, PACKAGE = "CREx"))
+    
+  }
 }

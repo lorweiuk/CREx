@@ -5,17 +5,27 @@
 #' param wavfile wavfile to be loaded (full path)
 #' return updated wav_list with loaded wav-file added
 
-CRload_wav <- function(wav_list, wavfile) {
-
-  out <- .Call("SDLload_wav", wavfile, PACKAGE = "CREx")
-
-  if (is.numeric(out)) {
-      if (out == -1) {
-          return(NULL)
-      }
-  }
+CRload_wav <- function(wav_list, wavfile, status = NULL) {
   
-  wav_list$wavfile <- c( wav_list$wavfile, out )
-	wav_list$names   <- c( wav_list$names, as.character(wavfile))
+  out <- NULL
+  
+  if (isStatus(status)) {
+    
+    out <- .Call("SDLload_wav", wavfile, status, PACKAGE = "CREx")
+    
+  } else {
+    
+    out <- .Call("SDLload_wav", wavfile, NULL, PACKAGE = "CREx")
+    
+  }
+
+  names(out) <- c("wavfile", "names", "valid")
+
+  wav_list$wavfile <- c( wav_list$wavfile, out$wavfile )
+  
+	wav_list$names   <- c( wav_list$names, out$names)
+	
+	wav_list$valid   <- c( wav_list$valid, out$valid)
+	
 	return(wav_list)
 }

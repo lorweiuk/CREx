@@ -2,18 +2,28 @@
 #'
 #' set audio volume
 
-CRaudio_volume <- function(volume, channel) {
+CRaudio_volume <- function(volume, channel, status = NULL) {
   
-  if (!is.numeric(channel) || channel < 0 || channel %% 1 != 0)
-    stop("Channel must be integer")
-  
-  out <- .Call("SDLaudio_volume", volume, channel, PACKAGE = "CREx")
-  
-  if (is.numeric(out)) {
-    if (out == -1) {
-      return(NULL)
+  if (!is.numeric(channel) || channel < 0 || channel %% 1 != 0) {
+    
+    warning("Channel must be integer.")
+    
+    if (isStatus(status)) {
+      
+      invisible( .Call("SDLset_status", status, 0, "Channel must be integer.", PACKAGE = "CREx") )
+      
+    }
+    
+  } else {
+    
+    if (isStatus(status)) {
+        
+      invisible(.Call("SDLaudio_volume", volume, channel, status, PACKAGE = "CREx"))
+      
+    } else {
+      
+      invisible(.Call("SDLaudio_volume", volume, channel, NULL, PACKAGE = "CREx"))
+      
     }
   }
-  
-  return(out)
 }

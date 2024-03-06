@@ -2,7 +2,15 @@
 #'
 #' Show cursor symbol again after it was hidden wiht CRhide_mouse()
 
-CRshow_mouse <- function() {
+CRshow_mouse <- function(status = NULL) {
 
-  invisible( .Call("SDLshow_mouse", PACKAGE = "CREx") )
+  if (isStatus(status)) {
+    
+    invisible( .Call("SDLshow_mouse", status, PACKAGE = "CREx") )
+    
+  } else {
+    
+    invisible( .Call("SDLshow_mouse", NULL, PACKAGE = "CREx") )
+    
+  }
 }

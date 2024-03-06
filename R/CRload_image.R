@@ -5,26 +5,48 @@
 #' param imagefile file of image (full path) of image to be loaded
 #' return updated image_list with loaded image added
 
-CRload_image <- function(image_list, imagefile) {
+CRload_image <- function(image_list, imagefile, status = NULL) {
   
-  dotpos <- gregexpr(".", imagefile, fixed = TRUE)[[1]][1]
+  splitname <- strsplit(imagefile, ".", fixed = TRUE)[[1]]
   
-  if (dotpos == -1) {
-	  stop("imagefile must have dot and extension.")
-  }
-  
-  extension <- substr(imagefile, dotpos, nchar(imagefile))
-  
-  out <- .Call("SDLload_image", imagefile, extension, PACKAGE = "CREx")
-  
-  if (is.numeric(out)) {
-	  if (out == -1) {
-	    return(NULL)
-	  }
-  }
+  if (length(splitname) == 1) {
     
-  image_list$imagefile <- c( image_list$imagefile, out)
-  image_list$names     <- c( image_list$names, as.character(imagefile))
+	  warning("Imagefile must have dot and extension.")
+    
+    if (isStatus(status)) {
+      
+      invisible( .Call("SDLset_status", status, 0, "Imagefile must have dot and extension.", PACKAGE = "CREx") )
+      
+    }
+    
+    return(image_list)
+    
+  }
+  
+  extension <- paste0(".", splitname[length(splitname)])
+  
+  out <- NULL
+  
+  if (isStatus(status)) {
+    
+    out <- .Call("SDLload_image", imagefile, extension, status, PACKAGE = "CREx")
+    
+  } else {
+    
+    out <- .Call("SDLload_image", imagefile, extension, NULL, PACKAGE = "CREx")
+    
+  }
+  
+  names(out) <- c("imagefile", "names", "extension", "valid")
+  
+  image_list$imagefile <- c(image_list$imagefile, out$imagefile)
+  
+  image_list$names     <- c(image_list$names, out$names)
+  
+  image_list$extension <- c(image_list$extension, out$extension)
+
+  image_list$valid     <- c(image_list$valid, out$valid)
+  
   return(image_list)
 
 }

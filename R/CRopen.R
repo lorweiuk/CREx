@@ -7,16 +7,21 @@
 #' param h height of window (x, y, w, h all 0 opens full-screen window)
 #' return returns list of pointers to SDL structures needed to control graphics etc.
 
-CRopen <- function(x=0, y=0, w=0, h=0, param=c()) {
-
-  out <- .Call( "SDLopen", x, y, w, h, param, length(param), PACKAGE = "CREx" )
+CRopen <- function(x = 0, y = 0, w = 0, h = 0, param = c(), status = NULL) {
   
-  if (is.numeric(out)) {
-      if (out == -1) {
-          return(NULL)
-      }
-  }
+  out <- NULL
+  
+  if (isStatus(status)) {
     
-  names(out) <- c("window", "surface", "renderer", "event", "width", "height", "timer_resolution", "frame_duration")
+    out <- .Call( "SDLopen", x, y, w, h, param, length(param), status, PACKAGE = "CREx" )
+    
+  } else {
+    
+    out <- .Call( "SDLopen", x, y, w, h, param, length(param), NULL, PACKAGE = "CREx" )
+    
+  }
+
+  names(out) <- c("window", "surface", "renderer", "event", "width", "height", "timer_resolution", "frame_duration", "valid")
+  
   return(out)
 }

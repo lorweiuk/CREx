@@ -4,15 +4,30 @@
 #' param graphics_list a list created with CRopen(), containing pointers to window, renderer, surface and event.
 #' return return times in milliseconds when the call to present returned.
 
-CRrender_present <- function(graphics_list) {
+CRrender_present <- function(graphics_list, status = NULL) {
 
   if ( !isGraphicsList(graphics_list) ) {
-    stop("Input structure must be \"graphics_list\".")
+    
+    warning("Input structure must be graphics_list.")
+    
+    if (isStatus(status)) {
+      
+      invisible( .Call("SDLset_status", status, 0, "Input structure must be graphics list.", PACKAGE = "CREx") )
+      
+    }
+    
+  } else {
+    
+    graphics_list <- orderGraphicsList(graphics_list)
+    
+    if (isStatus(status)) {
+      
+      invisible( .Call("SDLrender_present", graphics_list, status, PACKAGE = "CREx") )
+      
+    } else {
+      
+      invisible( .Call("SDLrender_present", graphics_list, NULL, PACKAGE = "CREx") )
+      
+    }
   }
-   
-  graphics_list = orderGraphicsList(graphics_list)
-  out <- .Call("SDLrender_present", graphics_list, PACKAGE = "CREx")
-
-  return(out)
-  
 }

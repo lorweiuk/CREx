@@ -9,7 +9,7 @@ isGraphicsList <- function(objin) {
 
 isWavList <- function(objin) {
   # check if objin is wav_list
-  if ( "wavfile" %in% names(objin) && "names" %in% names(objin) ) {
+  if ( "wavfile" %in% names(objin) ) {
     return(TRUE)
   } else {
     return(FALSE)
@@ -18,7 +18,7 @@ isWavList <- function(objin) {
 
 isImageList <- function(objin) {
   # check if objin is image_list
-  if ( "imagefile" %in% names(objin) && "names" %in% names(objin) ) {
+  if ( "imagefile" %in% names(objin) ) {
     return(TRUE)
   } else {
     return(FALSE)
@@ -121,7 +121,6 @@ orderGraphicsList <- function(objin) {
   }
     
 }
-
 
 isActive <- function(objin) {
   # check if structure was closed yet

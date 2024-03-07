@@ -37,14 +37,18 @@ CRload_image <- function(image_list, imagefile, status = NULL) {
     
   }
   
-  names(out) <- c("imagefile", "names", "extension", "valid")
+  names(out) <- c("imagefile", "names", "extension", "width", "height", "valid")
   
   image_list$imagefile <- c(image_list$imagefile, out$imagefile)
   
   image_list$names     <- c(image_list$names, out$names)
   
   image_list$extension <- c(image_list$extension, out$extension)
+  
+  image_list$width     <- c(image_list$width, out$width)
 
+  image_list$height    <- c(image_list$height, out$height)
+  
   image_list$valid     <- c(image_list$valid, out$valid)
   
   return(image_list)

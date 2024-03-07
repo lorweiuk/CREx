@@ -10,7 +10,33 @@ CRclose <- function(...) {
   
   if (length(input) > 0) {
     
-    for (i in 1:length(input)) {
+    # change order of closing to gs-last
+    
+    neworder <- 1:length(input)
+    
+    idx_gs <- NULL
+    
+    # first, search for graphics list
+
+    for (i in neworder) {
+      
+      if (isGraphicsList(input[[i]])) {
+        
+        idx_gs <- i
+        
+        break
+      }
+    }
+    
+    # if gs found: reorder with index of gs last
+    
+    if (!is.null(idx_gs)) {
+      
+      neworder <- c(neworder[-idx_gs], idx_gs)
+    
+    }
+    
+    for (i in neworder) {
       # loop through input, close depending on structure type
       
       if ( isGraphicsList(input[[i]]) ) {

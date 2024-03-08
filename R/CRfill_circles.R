@@ -4,7 +4,7 @@
 #' param graphics_list a list created with CRopen(), containing pointers to window, renderer, surface and event
 #' param circles_list list defining circle (must contain elements centerx, centery, radius)
 
-CRfill_circles <- function(graphics_list, circles_list) {
+CRfill_circles <- function(graphics_list, circles_list, status = NULL) {
 
   if ( !isGraphicsList(graphics_list) ) {
     

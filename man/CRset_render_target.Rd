@@ -1,16 +1,16 @@
 \name{CRset_render_target}
 \alias{CRset_render_target}
 \title{
-    Set rendering target to texture.
+    Set texture as rendering target.
 }
 \description{
-    Change rendering target from window belonging to graphics_list to some texture; use \code{CRreset_render_target} to reset to window.
+    Change rendering target from window belonging to graphics_list to some texture. Use \code{CRreset_render_target} to set window as rendering target again.
 }
 \usage{
-    CRset_render_target(graphics_list, texture_list, index)
+    CRset_render_target(graphics_list, texture_list, index, status = NULL)
 }
 \arguments{
-    \item{graphics_list}{a list containing pointers to window, renderer etc. created with \code{CRopen}.}
-    \item{texture_list}{a list of textures created with \code{CRcreate_texture}.}
-    \item{index}{index of texture intended to be target in texture_list.}
+    \item{graphics_list}{List containing pointers to window, renderer etc. created with \code{CRopen}.}
+    \item{texture_list}{List of textures created with \code{CRcreate_texture}.}
+    \item{index}{Index of texture intended to be target in texture_list.}
 }

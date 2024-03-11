@@ -4,18 +4,19 @@
     Draws outline of a circle with limited precision.
 }
 \description{
-    Draws outline of a cirlce to rendering target, circle is defined in terms of center point and radius (list(centerx, centery, radius)). Precision is set by user.
+    Draws outline of a cirlce to rendering target, circle is defined in terms of center point and radius (list(centerx, centery, radius)). Precision is set by user (n_points) and determines how many line segments the circle's outline consists of.
 }
 \usage{
-CRdraw_circle_n(graphics_list, circle_list, n_points)
+CRdraw_circle_n(graphics_list, circle_list, n_points, status = NULL)
 }
 \arguments{
-    \item{graphics_list}{a list containing pointers to window, renderer etc. created with \code{CRopen}.}
-    \item{circle_list}{list defining circle, containing elements centerx, centery, radius.}
-    \item{n_points}{positive integer setting precision of circle.}
+    \item{graphics_list}{List containing pointers to window, renderer etc. created with \code{CRopen}.}
+    \item{circle_list}{List defining circle, containing elements centerx, centery, and radius.}
+    \item{n_points}{Positive integer setting precision of circle.}
+    \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
 
 \examples{
-    CRdraw_circle_n( mygraphics, list(centerx = 50, centery = 50, radius = 150), 7 )
+    CRdraw_circle_n(mygraphics, list(centerx = 50, centery = 50, radius = 150), 7)
 }
 

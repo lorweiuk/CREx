@@ -4,14 +4,15 @@
     Draws outline of a circle.
 }
 \description{
-    Draws outline of a cirlce to rendering target, circle is defined in terms of center point and radius (list(centerx, centery, radius)).
+    Draws outline of a cirlce to rendering target. Circle is defined in a circle_list as center point and radius (list(centerx, centery, radius)).
 }
 \usage{
-CRdraw_circle(graphics_list, circle_list)
+CRdraw_circle(graphics_list, circle_list, status = NULL)
 }
 \arguments{
-    \item{graphics_list}{a list containing pointers to window, renderer etc. created with \code{CRopen}.}
-    \item{circle_list}{list defining circle, containing elements centerx, centery, radius.}
+    \item{graphics_list}{List containing pointers to window, renderer etc. created with \code{CRopen}.}
+    \item{circle_list}{List defining circle, containing elements centerx, centery, radius.}
+    \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
 \details{
     \code{CRdraw_circle} uses Bresenham's algorithm.

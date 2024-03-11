@@ -1,23 +1,24 @@
 \name{CRcolor_to_transparent}
 \alias{CRcolor_to_transparent}
 \title{
-    Set a color in surface to transparent.
+    Set color in surface to transparent.
 }
 \description{
-    Takes in an image_list (loaded with \code{CRload_image}) and sets a color specified in color_list to transparent. Index argument specifies which image to use. For it to take effect, transparency must first be enabled using \code{CRallow_alpha}.
+    Takes in image_list loaded with \code{CRload_image} and sets color specified in color_list to transparent. Index argument specifies which image to use. Note that effects of setting color to transparent are affected by blend mode set via \code{CRset_blend_mode}.
 }
 \usage{
-CRcolor_to_transparent(image_list, index, color_list)
+CRcolor_to_transparent(image_list, index, color_list, status = NULL)
 }
 \arguments{
-    \item{image_list}{an image_list, usually loaded with \code{CRload_image}.}
-    \item{index}{index indicating which image in image_list to use.}
-    \item{color_list}{a color list (elements r,g,b, possibly a) specifying color in surfacep to be set to transparent.}
+    \item{image_list}{Image_list created with \code{CRload_image}.}
+    \item{index}{Index of image in image_list to use.}
+    \item{color_list}{Color_list with elements r, g, b (and possibly a) specifying color in image to set to transparent.}
+    \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
 
 \examples{
-    CRallow_alpha( graphics_list )
-    myimage <- CRload_image( list(), "C:/Users/me/picture_of_me.jpg" )
-    CRcolor_to_transparent( myimage, 1, list(r = 255, g = 110, b = 40) )
+    CRset_blend_mode(gs, "blend")
+    myimage <- CRload_image(list(), "C:/Users/me/picture_of_me.jpg")
+    CRcolor_to_transparent(myimage, 1, list(r = 255, g = 110, b = 40))
 }
 

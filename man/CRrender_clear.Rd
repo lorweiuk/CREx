@@ -4,11 +4,12 @@
     Clears rendering target.
 }
 \description{
-    Clears rendering target to color last set with \code{CRset_render_color}; changes take effect at next call to \code{CRrender_present}.
+    Clears rendering target to color last set with \code{CRset_render_color}. Changes take effect after next call to \code{CRrender_present}.
 }
 \usage{
-CRrender_clear(graphics_list)
+CRrender_clear(graphics_list, status = NULL)
 }
 \arguments{
-    \item{graphics_list}{a list containing pointers to window, renderer etc. created with \code{CRopen}.}
+    \item{graphics_list}{List containing pointers to window, renderer etc. created with \code{CRopen}.}
+    \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }

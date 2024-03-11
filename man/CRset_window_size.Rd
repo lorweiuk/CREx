@@ -4,16 +4,17 @@
     Set new dimensions for window.
 }
 \description{
-        Sets new width and height for window, updates info in graphics structure. Width and height in graphics structure reflect rendering area, so can deviate from window dimensions.
+    Sets new width and height for window, updates info in graphics-list. Width and height in graphics-list reflect actual rendering area.
 }
 \usage{
-graphics_list <- CRset_window_size(graphics_list, width, height)
+graphics_list <- CRset_window_size(graphics_list, width, height, status = NULL)
 }
 \arguments{
-    \item{graphics_list}{a list containing pointers to window, renderer etc. created with \code{CRopen}.}
-    \item{width}{new width of window.}
-    \item{height}{new height of window.}
+    \item{graphics_list}{List containing pointers to window, renderer etc. created with \code{CRopen}.}
+    \item{width}{New width of window.}
+    \item{height}{New height of window.}
+    \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
 \value{
-    Returns updated graphics structure.
+    Returns updated graphics-list.
 }

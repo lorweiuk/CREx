@@ -10,10 +10,18 @@
 CRload_wav(wav_list, wavfile, status = NULL)
 }
 \arguments{
-    \item{(wav_list}{a list of wav files previously loaded (possibly empty), to which the loaded wav file is added.}
+    \item{wav_list}{a list of wav files previously loaded (possibly empty), to which the loaded wav file is added.}
     \item{wavfile}{wav file (full path, filename, extension) to be loaded.}
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
 \value{
     Returns updated wav_list with loaded wav-file added. If everything worked fine, returned wav_list has an integer \code{valid} set to \code{1}.
+}
+\examples{
+    CRinit_audio()
+
+    wavs <- list()
+    wavs <- CRload_wav(wavs, "C:/Documents/sound1.wav")
+    wavs <- CRload_wav(wavs, "C:/Documents/sound2.wav")
+    wavs <- CRload_wav(wavs, "C:/Documents/sound3.wav")
 }

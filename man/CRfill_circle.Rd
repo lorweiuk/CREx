@@ -17,3 +17,7 @@ CRfill_circle(graphics_list, circle_list, status = NULL)
 \details{
     \code{CRfill_circle} uses Bresenham's algorithm.
 }
+\examples{
+    CRfill_circle( mygraphics, list(centerx = 50, centery = 50, radius = 150) )
+}
+

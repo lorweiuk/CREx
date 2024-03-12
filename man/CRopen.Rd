@@ -4,7 +4,7 @@
     Opens a window, initializes graphics and related structures.
 }
 \description{
-    Opens a window, intitializes graphics structures, create event for polling event queue, measure frame-rate etc.
+    Opens a window, intitializes graphics structures, creates event for polling event queue, measures frame-rate etc.
 }
 \usage{
 CRopen(x = 0, y = 0, w = 0, h = 0, param = c(), status = NULL)
@@ -24,7 +24,10 @@ CRopen(x = 0, y = 0, w = 0, h = 0, param = c(), status = NULL)
     \code{CRopen} calls SDL functions to open a window, get window surface and renderer, and initialize R pointers to structures required later; with default arguments x = y = w = h = 0, a full-screen window is opened.
 }
 \examples{
-    graph <- CRopen( 50, 50, 500, 500 )
-    CRclose( graph )
+    gs <- CRopen( 50, 50, 500, 500 )
+    
+    CRwait_ms(1000)
+    
+    CRclose(gs)
 }
 

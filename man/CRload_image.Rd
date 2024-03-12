@@ -17,3 +17,9 @@ CRload_image(image_list, imagefile, status = NULL)
 \value{
     Returns updated image_list with loaded image added. If everything worked fine, returned image_list has an integer \code{valid} set to \code{1}.
 }
+\examples{
+    imgl <- list()
+    imgl <- CRload_image(imgl, "C:/Documents/picture_1.png")
+    imgl <- CRload_image(imgl, "C:/Documents/picture_2.png")
+    imgl <- CRload_image(imgl, "C:/Documents/picture_3.png")
+}

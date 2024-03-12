@@ -3,19 +3,24 @@
 \title{
     Polls next pending event.
 }
+
 \description{
     Polls next event in event queue provided in graphics_list.
 }
+
 \usage{
     CRpoll_event(graphics_list, status = NULL)
 }
+
 \arguments{
     \item{graphics_list}{List containing pointers to window, renderer etc. created with \code{CRopen}.}
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
+
 \value{
     Returns \code{NULL} if no response is present in queue. Otherwise, a response_list specifying the polled response. Response_list contains elements \code{type} (type of event), \code{code} (specific event), \code{label} (description of event), \code{state} (some qualifying information of event), \code{val} (value for event), \code{x} and \code{y} (e.g. mouse coordinates), and \code{timestamp} (time of event).
 }
+
 \details{
   \code{CRpoll_event} returns a \emph{response_list}.
   
@@ -30,4 +35,21 @@
   For mouse events, elements \emph{x} and \emph{y} indicate the mouse's position in the window area.
 
   Element \emph{timestamp} indicates when the OS registered the response.
+}
+
+\examples{
+  rout <- NULL
+  
+  while (!is.null(rout <- CRpoll_event(gs))) {
+    
+    if (rout$type == "window_event" && rout$label == "close") {
+      
+      run <- FALSE
+      
+    } else if (rout$type == "key_down") {
+    
+      RT <- CRget_time()
+    
+    }
+  }
 }

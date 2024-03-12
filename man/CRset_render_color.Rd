@@ -14,3 +14,12 @@
     \item{color_list}{List specifying color to be used (must contain r, g, b, and optionally a). Effect of a is determined by blend-mode, see \code{CRset_blend_mode}.}
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
+\examples{
+    red <- list(r = 200, g = 0, b = 0)
+    
+    CRset_render_color(gs, red)
+    
+    CRrender_clear(gs)
+    
+    CRrender_present(gs)
+}

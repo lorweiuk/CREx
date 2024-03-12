@@ -11,6 +11,9 @@ CRflush(graphics_list, type = NULL, status = NULL)
 }
 \arguments{
     \item{graphics_list}{List containing pointers to window, renderer etc. created with \code{CRopen}.}
-    \item{type}{Optional string specifying which type of events to flush. Can be any type possible in \code{CRpoll_event}.}
+    \item{type}{Optional string specifying which type of events to flush. Can be any type possible in \code{CRpoll_event}. If not specified (NULL), all events are flushed.}
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
+}
+\examples{
+CRflush(gs, type = "key_down")
 }

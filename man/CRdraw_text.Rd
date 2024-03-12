@@ -4,7 +4,7 @@
     Draws text.
 }
 \description{
-    Draws text string to rendering target, upper-left corner of text specified in point_list, using font loaded with \code{CRload_font}.
+    Draws text to rendering target, upper-left corner of text specified in point_list, using font loaded with \code{CRload_font}.
 }
 \usage{
 CRdraw_text( graphics_list, font_list, index, text, point_list, wrap_length = NULL, status = NULL)
@@ -18,4 +18,16 @@ CRdraw_text( graphics_list, font_list, index, text, point_list, wrap_length = NU
     \item{wrap_length}{After how many pixels should text be wrapped? Wrapping happens at spaces. Leave wrap_length at default (NULL) for single-line, non-wrapped rendering of text.}
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
+\examples{
+    fnt_list <- CRload_font(list(), "C:/Documents/myfont.ttf", 20)
+    
+    CRset_render_color(gs, list(r = 0, g = 0, b = 0))
+    
+    CRrender_clear(gs)
+    
+    CRset_render_color(gs, list(r = 100, g = 0, b = 0))
+    
+    CRdraw_text(gs, fnt_list, 1, "HELLO!", list(x = 100, y = 100))
 
+    CRrender_present(gs)
+}

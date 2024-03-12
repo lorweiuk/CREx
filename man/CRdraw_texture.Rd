@@ -1,10 +1,10 @@
 \name{CRdraw_texture}
 \alias{CRdraw_texture}
 \title{
-    Copy texture.
+    Copies texture.
 }
 \description{
-    Copy a texture to rendering target. Textures can be used to render multiple things off-screen before copying texture to screen at once. To this end, use functions \code{CRcreate_texture}, \code{CRset_render_target}, and \code{CRreset_render_target}. Additionally, \code{CRdraw_texture} can be used to rotate texture before copying to rendering target. Rotation is specified in degrees, around point in center_point.
+    Copies a texture to rendering target. See \code{CRcreate_texture} for more info on textures. \code{CRdraw_texture} can copy the entire texture or parts of it (specified in argument texture_rect), can fill the entire rendering target or parts of it (argument target_rect), can rotate the texture before copying (argument angle). Rotation happens around the point specified in center_point.
 }
 \usage{
 CRdraw_texture(graphics_list, texture_list, index, texture_rect = list(), target_rect = list(), angle = 0, center_point = list(), status = NULL)
@@ -19,4 +19,22 @@ CRdraw_texture(graphics_list, texture_list, index, texture_rect = list(), target
     \item{center_point}{Defines point around which to rotate (contains elements x, y).}
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
+\examples{
+    txl <- CRcreate_texture(gs, list(), 100, 100)
+    
+    CRset_render_target(gs, txl, 1)
+    
+    CRset_render_color(gs, list(r = 100, g = 0, b = 0))
+    
+    CRfill_rect(gs, list(x = 25, y = 25, w = 50, h = 50))
+    
+    CRreset_render_target(gs)
+    
+    CRset_render_color(gs, list(r = 0, g = 0, b = 0))
+    
+    CRrender_clear(gs)
+    
+    CRdraw_texture(gs, txl, 1)
 
+    CRrender_present(gs)
+}

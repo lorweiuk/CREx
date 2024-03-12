@@ -15,5 +15,15 @@ CRdraw_line(graphics_list, line_list, status = NULL)
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
 \examples{
-    CRdraw_line(gs, list(x1 = 0, y1 = 0, x2 = gs$width, y2 = gs$height))
+    CRset_render_color(gs, list(r = 0, g = 0, b = 0))
+    
+    CRrender_clear(gs)
+    
+    CRset_render_color(gs, list(r = 100, g = 0, b = 0))
+    
+    lines <- list(x1 = 50, y1 = 50, x2 = 100, y2 = 100)
+    
+    CRdraw_lines(gs, lines)
+    
+    CRrender_present(gs)
 }

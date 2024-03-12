@@ -4,7 +4,7 @@
     Updates width and height info in graphics-list.
 }
 \description{
-    Updates width and height values in graphics-list to current dimensions of rendering area. Useful after window was resized.
+    Updates width and height values in graphics-list to current dimensions of rendering area. Useful after window was resized by user.
 }
 \usage{
 graphics_list <- CRupdate_render_size(graphics_list, status = NULL)

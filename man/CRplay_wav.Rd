@@ -15,3 +15,10 @@
     \item{channel}{Channel on which to play wav.}
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
+\examples{
+    CRinit_audio()
+
+    wavs <- CRload_wav(list(), "C:/Documents/sound1.wav")
+    
+    CRplay_wav(wavs, 1, 0)
+}

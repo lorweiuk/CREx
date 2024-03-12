@@ -15,5 +15,5 @@ CRfill_polygon(graphics_list, polygon_list, status = NULL)
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
 \details{
-    \code{CRfill_polygon} uses "scanline" method to fill polygon.
+    \code{CRfill_polygon} uses "scanline" method to fill polygon. See \code{CRdraw_polygon} for an example.
 }

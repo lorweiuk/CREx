@@ -1,10 +1,10 @@
 \name{CRopen}
 \alias{CRopen}
 \title{
-    Initialize graphics and related structures, open window.
+    Opens a window, initializes graphics and related structures.
 }
 \description{
-    Opens window, intitializes graphics structures, create event for polling event queue, measure frame-rate etc.
+    Opens a window, intitializes graphics structures, create event for polling event queue, measure frame-rate etc.
 }
 \usage{
 CRopen(x = 0, y = 0, w = 0, h = 0, param = c(), status = NULL)
@@ -23,7 +23,6 @@ CRopen(x = 0, y = 0, w = 0, h = 0, param = c(), status = NULL)
 \details{
     \code{CRopen} calls SDL functions to open a window, get window surface and renderer, and initialize R pointers to structures required later; with default arguments x = y = w = h = 0, a full-screen window is opened.
 }
-
 \examples{
     graph <- CRopen( 50, 50, 500, 500 )
     CRclose( graph )

@@ -4,7 +4,7 @@
     Draws outline of a circle with limited precision.
 }
 \description{
-    Draws outline of a cirlce to rendering target, circle is defined in terms of center point and radius (list(centerx, centery, radius)). Precision is set by user (n_points) and determines how many line segments the circle's outline consists of.
+    Draws outline of a cirlce to rendering target, circle is defined in a circle_list as centerx, centery and radius. Precision is set by user (n_points) and determines how many line segments the circle's outline consists of.
 }
 \usage{
 CRdraw_circle_n(graphics_list, circle_list, n_points, status = NULL)

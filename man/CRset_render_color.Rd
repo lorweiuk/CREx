@@ -1,7 +1,7 @@
 \name{CRset_render_color}
 \alias{CRset_render_color}
 \title{
-    Sets render drawing color.
+    Sets color for render drawing.
 }
 \description{
     Sets render drawing color. This is the color used by subsequent calls to the drawing functions: \code{CRdraw_rect, CRdraw_lines, CRfill_rect, CRfill_circle}, etc.

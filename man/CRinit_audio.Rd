@@ -1,10 +1,10 @@
 \name{CRinit_audio}
 \alias{CRinit_audio}
 \title{
-    Initialize audio system.
+    Initializes audio system.
 }
 \description{
-    Initialize audio system. Must be called before audio files can be loaded and played using \code{CRload_wav} and \code{CRplay_wav}.
+    Initializes audio system. Must be called before audio files can be loaded and played using \code{CRload_wav} and \code{CRplay_wav}.
 }
 \usage{
 CRinit_audio(status = NULL)

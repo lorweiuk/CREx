@@ -4,7 +4,7 @@
     Draws outline of multiple circles.
 }
 \description{
-    Draws outline of multiple cirlces to rendering target, circles are defined in terms of center points and radii (list(centerx, centery, radius)).
+    Draws outline of multiple cirlces to rendering target, circles are defined as circle_lists with centerx, centery and radius.
 }
 \usage{
 CRdraw_circles(graphics_list, circles_list, status = NULL)

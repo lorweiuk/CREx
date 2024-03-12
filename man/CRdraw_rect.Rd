@@ -1,7 +1,7 @@
 \name{CRdraw_rect}
 \alias{CRdraw_rect}
 \title{
-    Draw a rectangle.
+    Draws rectangle.
 }
 \description{
     Draws outline of rectangle defined in rect_list to rendering target. Rect_list must contain elements x, y, w, and h.

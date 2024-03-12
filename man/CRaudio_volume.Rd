@@ -11,3 +11,6 @@ CRaudio_volume(volume, channel, status = NULL)
     \item{channel}{Number of channel for which volume is set (starting at 0).}
     \item{status}{Optional list \code{status} with elements \code{value} and \code{message} to retrieve warnings and error messages.}
 }
+\details{
+    See \code{CRaudio_pause}, \code{CRinit_audio} and other audio functions for more details.
+}

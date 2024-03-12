@@ -1,10 +1,10 @@
 \name{CRclose}
 \alias{CRclose}
 \title{
-    Close CREx resources.
+    Closes CREx resources.
 }
 \description{
-    Closes and deallocates resources that were created and loaded earlier. These can include the basic graphics resources returned by CRopen() or CRcreate_texture() and other loaded resources returned by CRload_image(), CRload_font(), CRload_wav() or CRopen_controller().
+    Closes and deallocates resources that were created and loaded earlier. These can include the basic graphics-list returned by \code{CRopen} or \code{CRcreate_texture} and other loaded resources returned by \code{CRload_image}, \code{CRload_font}, \code{CRload_wav} or \code{CRopen_controller}. Passing the graphics-list to \code{CRclose} will close the window.
 }
 \usage{
 CRclose(...)
@@ -16,4 +16,6 @@ CRclose(...)
     gs <- CRopen(50, 50, 500, 500)
     CRclose(gs)
 }
-
+\details{
+    Closing is generally necessary for all resources that were loaded or created by CREx-functions internally, as opposed to the user in R.
+}

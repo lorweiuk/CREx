@@ -1,7 +1,7 @@
 \name{CRset_window_size}
 \alias{CRset_window_size}
 \title{
-    Set new dimensions for window.
+    Sets new dimensions for window.
 }
 \description{
     Sets new width and height for window, updates info in graphics-list. Width and height in graphics-list reflect actual rendering area.

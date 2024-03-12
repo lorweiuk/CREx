@@ -1,7 +1,7 @@
 \name{CRload_image}
 \alias{CRload_image}
 \title{
-    Loads image file.
+    Loads image-file.
 }
 \description{
     Loads an image file specified in imagefile, can be of type .bmp, .jpg, .jpeg, .png, .tif.

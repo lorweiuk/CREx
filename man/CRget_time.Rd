@@ -1,7 +1,7 @@
 \name{CRget_time}
 \alias{CRget_time}
 \title{
-    Get time in milliseconds.
+    Gives time in milliseconds.
 }
 \description{
     Get time in milliseconds since system was started.

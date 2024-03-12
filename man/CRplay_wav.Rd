@@ -1,7 +1,7 @@
 \name{CRplay_wav}
 \alias{CRplay_wav}
 \title{
-    Play wav file.
+    Plays wav-file.
 }
 \description{
     Plays wav file in wav_list, previously loaded with \code{CRload_wav}. Note that audio system must first be initialized using \code{CRinit_audio}.

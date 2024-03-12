@@ -1,7 +1,7 @@
 \name{CRrender_present}
 \alias{CRrender_present}
 \title{
-    Present to window.
+    Presents stimuli to screen.
 }
 \description{
     Presents what has been rendered to the window. By default, presentation is synchronized with vertical screen refresh. Function returns time in milliseconds after screen was refreshed.

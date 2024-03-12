@@ -1,7 +1,7 @@
 \name{CRflush}
 \alias{CRflush}
 \title{
-    Flushes event queue.
+    Flushes pending events.
 }
 \description{
     Flushes pending events in event queue. These will not be returned by \code{CRpoll_event}. If type is provided, only events of this type are flushed. For available types, see \code{CRpoll_event}.

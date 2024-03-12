@@ -4,7 +4,7 @@
     Draws outline of a circle.
 }
 \description{
-    Draws outline of a cirlce to rendering target. Circle is defined in a circle_list as center point and radius (list(centerx, centery, radius)).
+    Draws outline of a cirlce to rendering target. Circle is defined in a circle_list as centerx, centery and radius.
 }
 \usage{
 CRdraw_circle(graphics_list, circle_list, status = NULL)

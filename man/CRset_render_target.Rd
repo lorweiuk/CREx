@@ -1,10 +1,10 @@
 \name{CRset_render_target}
 \alias{CRset_render_target}
 \title{
-    Set texture as rendering target.
+    Sets texture as rendering target.
 }
 \description{
-    Change rendering target from window belonging to graphics_list to some texture. Use \code{CRreset_render_target} to set window as rendering target again.
+    Changes rendering target from window belonging to graphics_list to some texture. Use \code{CRreset_render_target} to set window as rendering target again.
 }
 \usage{
     CRset_render_target(graphics_list, texture_list, index, status = NULL)

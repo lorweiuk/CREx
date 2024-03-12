@@ -1,7 +1,7 @@
 \name{CRpoll_event}
 \alias{CRpoll_event}
 \title{
-    Polls next event in event queue.
+    Polls next pending event.
 }
 \description{
     Polls next event in event queue provided in graphics_list.

@@ -1,12 +1,3 @@
----
-title: "CREx: Programming psychological experiments in R"
-output: pdf_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # What is CREx?
 
 The CREx package for R on Windows OS's provides R functions to create windows, draw simple geometric shapes as well as images, play sounds, draw text and gather keyboard and mouse reactions. These functions allow programming cognitive experiments and gather behavioral data using R. Internally, the CREx functions call compiled C-functions, which are distributed along with the CREx package in dynamic-link library files. These C-functions provide limited access to the SDL2 library (https://www.libsdl.org/).

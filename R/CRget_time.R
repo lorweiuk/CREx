@@ -7,11 +7,11 @@ CRget_time <- function(status = NULL) {
 
   if (isStatus(status)) {
     
-    invisible(.Call("SDLget_time", status, PACKAGE = "CREx"))
+    return(.Call("SDLget_time", status, PACKAGE = "CREx"))
     
   } else {
     
-    invisible(.Call("SDLget_time", NULL, PACKAGE = "CREx"))
+    return(.Call("SDLget_time", NULL, PACKAGE = "CREx"))
     
   }
 }

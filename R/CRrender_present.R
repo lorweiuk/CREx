@@ -22,11 +22,11 @@ CRrender_present <- function(graphics_list, status = NULL) {
     
     if (isStatus(status)) {
       
-      invisible( .Call("SDLrender_present", graphics_list, status, PACKAGE = "CREx") )
+      return( .Call("SDLrender_present", graphics_list, status, PACKAGE = "CREx") )
       
     } else {
       
-      invisible( .Call("SDLrender_present", graphics_list, NULL, PACKAGE = "CREx") )
+      return( .Call("SDLrender_present", graphics_list, NULL, PACKAGE = "CREx") )
       
     }
   }
